@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from chatbot import get_response
+
+from app.services.chatbot_service import generate_response
 
 app = FastAPI()
 
@@ -9,4 +10,4 @@ class ChatRequest(BaseModel):
 
 @app.post("/chat")
 def chat(request: ChatRequest):
-    return {"response": get_response(request.message)}
+    return {"response": generate_response(request.message)}
