@@ -11,3 +11,8 @@ class ChatRequest(BaseModel):
 @app.post("/chat")
 def chat(request: ChatRequest):
     return {"response": generate_response(request.message)}
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
+
