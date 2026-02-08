@@ -6,4 +6,4 @@ app = FastAPI()
 
 @app.post("/chat")
 def chat(request: ChatRequest):
-    return {"response": generate_response(request.message)}
+    return generate_response(request.message)
