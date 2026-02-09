@@ -1,13 +1,30 @@
-from app.utils.redis_client import redis_client
+from app.services.ai_service import generate_ai_response
 
-def generate_response(message: str) -> str:
+def generate_response(message: str) -> dict:
+    if not isinstance(message, str):
+        return {
+            "status": "error",
+            "reply": "Message must be a string."
+        }
 
-    cached_response = redis_client.get(message)
-    if cached_response:
-        return cached_response
+    message = message.strip()
 
-    response = f"You said: {message}. This is an AI chatbot response."
+    if not message:
+        return {
+            "status": "error",
+            "reply": "Please provide a valid message."
+        }
 
-    redis_client.set(message, response)
+    if len(message) > 200:
+        return {
+            "status": "error",
+            "reply": "Message too long (max 200 chars)."
+        }
 
-    return response
+    ai_reply = generate_ai_response(message)
+
+    return {
+        "status": "success",
+        "reply": ai_reply
+    }
+
