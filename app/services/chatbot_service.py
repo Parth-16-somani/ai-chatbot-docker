@@ -28,6 +28,10 @@ def generate_response(message: str) -> dict:
     ai_reply = generate_ai_response(message)
 
     return {
-        "status": "success",
-        "reply": ai_reply
+    "status": "success",
+    "data": {
+        "user_message": message,
+        "ai_reply": ai_reply
     }
+}
+
