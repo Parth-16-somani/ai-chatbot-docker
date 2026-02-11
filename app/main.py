@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from app.services.chatbot_service import generate_response
 from app.models.schemas import ChatRequest
 from app.utils.config import APP_NAME
+
 import time
 
 app = FastAPI(title=APP_NAME)
