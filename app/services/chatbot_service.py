@@ -2,24 +2,28 @@ from app.services.ai_service import generate_ai_response
 
 def generate_response(message: str) -> dict:
     if not isinstance(message, str):
-        return {
-            "status": "error",
-            "reply": "Message must be a string."
-        }
+       return {
+    "status": "success",
+    "data": {
+        "user_message": message,
+        "ai_reply": ai_reply
+    }
+}
+
 
     message = message.strip()
 
     if not message:
-        return {
-            "status": "error",
-            "reply": "Please provide a valid message."
-        }
+       return {
+    "status": "error",
+    "message": "Error message here"
+}
 
     if len(message) > 200:
         return {
-            "status": "error",
-            "reply": "Message too long (max 200 chars)."
-        }
+    "status": "error",
+    "message": "Error message here"
+}
 
     ai_reply = generate_ai_response(message)
 
