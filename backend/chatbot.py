@@ -1,26 +1,20 @@
 from transformers import pipeline
+from vector_db import search
 
 generator = pipeline("text-generation", model="gpt2")
 
 
-def load_data():
-    with open("data/info.txt") as f:
-        return f.read()
+def get_answer(query):
 
-
-DATA = load_data()
-
-
-def get_answer(q: str):
+    context = search(query)
 
     prompt = f"""
-You are an AI assistant.
-Use the information below to answer the question.
+You are an AI assistant. Answer the question based on the context below.
 
-Information:
-{DATA}
+Context:
+{context}
 
-Question: {q}
+Question: {query}
 
 Answer:
 """
@@ -28,13 +22,11 @@ Answer:
     result = generator(
         prompt,
         max_length=150,
-        num_return_sequences=1,
-        temperature=0.3,
+        temperature=0.3
     )
 
     text = result[0]["generated_text"]
 
-    # return only part after Answer:
     if "Answer:" in text:
         return text.split("Answer:")[-1].strip()
 
