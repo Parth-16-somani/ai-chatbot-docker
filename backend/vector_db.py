@@ -7,7 +7,7 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # Load data
 def load_data():
-    with open("backend/data/info.txt") as f:
+    with open("data/info.txt") as f:
         return f.readlines()
 
 documents = load_data()
