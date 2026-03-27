@@ -1,33 +1,24 @@
 from transformers import pipeline
 from vector_db import search
 
-generator = pipeline("text-generation", model="gpt2")
-
+# Stable model (no tokenizer issues)
+generator = pipeline("text-generation", model="distilgpt2")
 
 def get_answer(query):
 
-    context = search(query)
+    results = search(query)
 
-    prompt = f"""
-You are an AI assistant. Answer the question based on the context below.
+    if not results:
+        return "No relevant information found."
 
-Context:
-{context}
+    query_words = query.lower().split()
 
-Question: {query}
+    # 🔥 choose best matching sentence
+    best = results[0]
 
-Answer:
-"""
+    for sentence in results:
+        if any(word in sentence.lower() for word in query_words):
+            best = sentence
+            break
 
-    result = generator(
-        prompt,
-        max_length=150,
-        temperature=0.3
-    )
-
-    text = result[0]["generated_text"]
-
-    if "Answer:" in text:
-        return text.split("Answer:")[-1].strip()
-
-    return text
+    return best
