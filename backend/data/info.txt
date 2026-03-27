@@ -1,1 +1,8 @@
-This chatbot answers questions about AI, Machine Learning, Docker, and project setup.
+Supervised Learning is a type of machine learning where the model is trained using labeled data.
+Machine Learning is a subset of AI that allows systems to learn from data.
+Regression is used to predict continuous values.
+Classification is used to predict categories.
+Overfitting occurs when a model performs well on training data but poorly on new data.
+Underfitting occurs when a model is too simple.
+Gradient Descent is an optimization algorithm.
+Neural Networks are inspired by the human brain.
