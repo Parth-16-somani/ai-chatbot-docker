@@ -6,3 +6,13 @@ Overfitting occurs when a model performs well on training data but poorly on new
 Underfitting occurs when a model is too simple.
 Gradient Descent is an optimization algorithm.
 Neural Networks are inspired by the human brain.
+Decision Trees are supervised learning algorithms used for classification and regression tasks.
+Random Forest is an ensemble learning method that combines multiple decision trees to improve accuracy.
+Support Vector Machines (SVM) are supervised models used for classification tasks by finding optimal boundaries.
+Logistic Regression is used for binary classification problems.
+Confusion Matrix is used to evaluate classification models.
+Accuracy measures the percentage of correct predictions.
+Bias is error due to overly simplistic assumptions in the model.
+Variance is error due to sensitivity to small fluctuations in training data.
+Regularization techniques like L1 and L2 help prevent overfitting.
+K-Nearest Neighbors (KNN) is a simple algorithm used for classification and regression.
