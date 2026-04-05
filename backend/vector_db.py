@@ -1,41 +1,23 @@
-from sentence_transformers import SentenceTransformer
-import faiss
-import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
-model = SentenceTransformer('all-MiniLM-L6-v2')
-
-# 🔥 Load and clean data
+# Load data
 def load_data():
     with open("data/info.txt", encoding="utf-8") as f:
         lines = f.readlines()
-
-    # 🔥 each line = one chunk
-    docs = [line.strip() for line in lines if line.strip()]
-    return docs
-
+    return [line.strip() for line in lines if line.strip()]
 
 documents = load_data()
 
-# 🔥 Safety check
-if len(documents) == 0:
-    raise ValueError("DATA FILE IS EMPTY — FIX info.txt")
-
-# 🔥 Build embeddings
-embeddings = model.encode(documents)
-
-dimension = embeddings.shape[1]
-index = faiss.IndexFlatL2(dimension)
-index.add(np.array(embeddings))
+# Create TF-IDF vectors
+vectorizer = TfidfVectorizer()
+doc_vectors = vectorizer.fit_transform(documents)
 
 
 def search(query, k=3):
+    query_vec = vectorizer.transform([query])
+    similarities = cosine_similarity(query_vec, doc_vectors)[0]
 
-    query_vec = model.encode([query])
-    distances, indices = index.search(np.array(query_vec), k)
+    top_indices = similarities.argsort()[-k:][::-1]
 
-    results = []
-    for i in indices[0]:
-        if i < len(documents):
-            results.append(documents[i])
-
-    return results   # 🔥 RETURN LIST (NOT STRING)
+    return [documents[i] for i in top_indices]
