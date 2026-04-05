@@ -1,18 +1,30 @@
-Supervised Learning is a type of machine learning where the model is trained using labeled data.
-Machine Learning is a subset of AI that allows systems to learn from data.
-Regression is used to predict continuous values.
-Classification is used to predict categories.
-Overfitting occurs when a model performs well on training data but poorly on new data.
-Underfitting occurs when a model is too simple.
-Gradient Descent is an optimization algorithm.
-Neural Networks are inspired by the human brain.
-Decision Trees are supervised learning algorithms used for classification and regression tasks.
-Random Forest is an ensemble learning method that combines multiple decision trees to improve accuracy.
-Support Vector Machines (SVM) are supervised models used for classification tasks by finding optimal boundaries.
-Logistic Regression is used for binary classification problems.
-Confusion Matrix is used to evaluate classification models.
-Accuracy measures the percentage of correct predictions.
-Bias is error due to overly simplistic assumptions in the model.
-Variance is error due to sensitivity to small fluctuations in training data.
-Regularization techniques like L1 and L2 help prevent overfitting.
-K-Nearest Neighbors (KNN) is a simple algorithm used for classification and regression.
+K-Nearest Neighbors determines outputs by examining the closest data points in feature space.
+Bias represents systematic error introduced by overly rigid model assumptions.
+Machine Learning enables systems to improve performance through exposure to data without explicit programming.
+A Confusion Matrix summarizes prediction outcomes using true and false classifications.
+Neural Networks consist of interconnected layers that transform inputs through weighted computations.
+Overfitting arises when a model memorizes training patterns instead of generalizing.
+Support Vector Machines construct decision boundaries that maximize separation margins between classes.
+Regression techniques estimate numerical quantities based on input variables.
+Variance captures how much a model’s predictions fluctuate due to changes in training data.
+Decision Trees split data into branches based on feature thresholds to reach predictions.
+Classification assigns inputs into predefined discrete labels or groups.
+Gradient Descent iteratively updates parameters to minimize a defined loss function.
+Random Forest aggregates predictions from multiple decision trees to enhance robustness.
+Accuracy quantifies the proportion of correct predictions over total predictions made.
+Underfitting happens when a model fails to capture underlying patterns due to excessive simplicity.
+Supervised Learning relies on datasets where inputs are paired with known outputs.
+Regularization methods introduce penalties to discourage overly complex models.
+Logistic Regression models the probability of class membership using a sigmoid function.
+Feature Scaling normalizes input ranges to stabilize and accelerate optimization.
+Cross Validation evaluates model performance by splitting data into multiple training and validation sets.
+Loss Function measures the discrepancy between predicted values and actual targets.
+Hyperparameters are configuration settings that control the learning process but are not learned from data.
+Training Data is the subset used to fit model parameters.
+Test Data provides an unbiased evaluation of a trained model’s generalization ability.
+Precision measures the proportion of correctly predicted positive instances among all predicted positives.
+Recall evaluates how many actual positive instances were correctly identified by the model.
+F1 Score balances precision and recall into a single harmonic mean metric.
+Epoch refers to one complete pass through the entire training dataset.
+Batch Size defines the number of samples processed before updating model parameters.
+Learning Rate controls the magnitude of parameter updates during optimization.
